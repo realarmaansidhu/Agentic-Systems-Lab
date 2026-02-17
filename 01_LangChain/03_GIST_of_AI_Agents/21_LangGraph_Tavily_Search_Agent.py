@@ -2,29 +2,18 @@
 
 import os
 import json
+from re import search
+from re import search
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage
 from langchain_groq import ChatGroq as Groq
-from tavily import TavilyClient
-
+from langchain_tavily import TavilySearch as search
 load_dotenv()
 
-tavily = TavilyClient()
-
-@tool
-def search(query: str) -> str:
-    """"
-    A simple search tool that takes a query and searches for it.
-    Arguements: query (str): The query to search for.
-    Returns: str: The search results. 
-    """
-    print(f"Searching for: {query}")
-    return tavily.search(query=query)
-
 llm = Groq(model="llama-3.3-70b-versatile", temperature=0, verbose=True, model_kwargs={"tool_choice": "auto"} ) # Groq' tool_choice model kwargs allows the model to automatically choose which tool to use based on the input query.
-tools = [search]
+tools = [search()]
 agent = create_agent(model=llm, tools=tools)
 
 query = input("Enter your query: ")
