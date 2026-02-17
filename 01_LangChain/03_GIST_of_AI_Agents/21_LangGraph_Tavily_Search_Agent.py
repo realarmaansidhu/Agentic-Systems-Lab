@@ -1,9 +1,6 @@
 # LangGraph code to implement a search agent using the LangChain library. The code defines a search tool that takes a query and returns search results. It then creates an agent using the Groq language model and the search tool, and invokes the agent with a human message asking about the weather in Tokyo. The results of the agent's execution flow are printed in a tree format using the Rich library.
 
 import os
-import json
-from re import search
-from re import search
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.tools import tool

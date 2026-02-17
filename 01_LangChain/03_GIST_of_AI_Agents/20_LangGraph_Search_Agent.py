@@ -20,7 +20,7 @@ def search(query: str) -> str:
     print(f"Searching for: {query}")
     return "Tokyo weather is Sunny."
 
-llm = Groq(model="llama-3.3-70b-versatile", temperature=0, verbose=True, )
+llm = Groq(model="llama-3.3-70b-versatile", temperature=0, verbose=True, model_kwargs={"tool_choice": "auto"})
 tools = [search]
 agent = create_agent(model=llm, tools=tools)
 result = agent.invoke({"messages": [HumanMessage(content="What is the weather in Tokyo?")]})
