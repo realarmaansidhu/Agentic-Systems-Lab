@@ -1,14 +1,10 @@
 # LangChain Code to Implement an Agent Loop with Tool Calling and Error Recovery, basically a ReAct pattern's manual implementation. This example uses a simple product pricing scenario to demonstrate how an agent can reason, call tools, observe results, and recover from errors in a loop.
 
-import os
 from dotenv import load_dotenv
 from langsmith import traceable  # LangSmith for tracing/debugging agent runs
 from langchain.chat_models import init_chat_model  # Abstraction to switch models easily
 from langchain.tools import tool  # Decorator to convert Python functions into LangChain tools
 from langchain.messages import HumanMessage, SystemMessage, ToolMessage, AIMessage
-
-# Load environment variables (API keys, etc.) from .env file
-load_dotenv()
 
 # Configuration
 MAX_ITERATIONS = 10  # Prevent infinite loops - agent stops after 10 iterations
