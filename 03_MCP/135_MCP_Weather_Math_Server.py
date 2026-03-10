@@ -1,7 +1,7 @@
 # 135 - Custom MCP Server (Math + Weather)
 # ==========================================
-# Run directly:  python 135_MCP_Weather_Math_Server.py
-# Used by:       136_MCP_Agent.py (spawns this as subprocess)
+# STDIO:  python 135_MCP_Weather_Math_Server.py          (spawned by 136_MCP_Agent.py)
+# SSE:    Change transport="sse" below, then run manually before running the agent
 
 from mcp.server.fastmcp import FastMCP
 
@@ -23,4 +23,4 @@ def get_weather(city: str) -> str:
     return f"{city}: Hot as hell 🔥"
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="stdio")  # Change to "sse" for SSE transport
